@@ -10,7 +10,6 @@ export const contactsApi = createApi({
       query: (value = '') => `/contacts?filter=${value}&sortBy=name`,
       providesTags: ['POST', 'DELETE'],
     }),
-
     addContact: builder.mutation({
       query: body => ({
         url: '/contacts',

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { chengeFilter } from 'redux/filter/filterSlise';
 
 export default function Search() {
-
   const { filter } = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
