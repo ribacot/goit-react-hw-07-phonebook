@@ -1,14 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { contactsApi } from './contactsApi';
 
 import { reducer } from './reducer';
 
-const persistConfig = {
-  key: 'root',
-  storage,
-  blacklist: ['filter'],
-};
-const persistedReducer = persistReducer(persistConfig, reducer);
-export const store = configureStore({ reducer: persistedReducer });
-export const persistor = persistStore(store);
+export const store = configureStore({
+  reducer,
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(contactsApi.middleware),
+});
+setupListeners(store.dispatch);
