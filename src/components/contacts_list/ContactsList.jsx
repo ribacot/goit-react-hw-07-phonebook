@@ -4,13 +4,14 @@ import { IconContext } from 'react-icons';
 import css from './ContactsList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { delContactsThunk } from 'redux/contacts/productThunk';
+import { selectContacts, selectFilter } from 'redux/selectors';
 
 export const ContactsList = () => {
- const { filter } = useSelector(state => state.filter);
-  const { contacts } = useSelector(state => state.contacts);
+  const { filter } = useSelector(selectFilter);
+  const { contacts } = useSelector(selectContacts);
   const dispatch = useDispatch();
+
   const getFilteredContacts = () => {
-    console.log('filter',filter)
     return contacts.filter(({ name }) => name.toLowerCase().includes(filter));
   };
 

@@ -39,3 +39,5 @@ export const hendleRrejected = (state, { payload }) => ({
   isLoading: false,
   error: payload,
 });
+
+

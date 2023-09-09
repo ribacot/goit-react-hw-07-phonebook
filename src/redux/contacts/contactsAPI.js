@@ -7,10 +7,11 @@ export const getContacts = async () => {
 
 export const addContact = async contact => {
   const data = await fetch(
-    'https://64fa2e8c4098a7f2fc1570fd.mockapi.io/api/v1/contacts',
+    'https://64fa2e8c4098a7f2fc1570fd.mockapi.io/api/v1/contacts/',
     {
       method: 'POST',
-      body: JSON.stringify(contact),
+      headers: {'content-type':'application/json'},
+      body: JSON.stringify(contact)
     }
   )
   return await data.json();
