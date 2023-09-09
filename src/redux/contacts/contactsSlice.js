@@ -9,16 +9,9 @@ const {
   hendleFulfilledget,
   hendlePanding,
   hendleRrejected,
-//   optThunk,
+  optThunk,
 } = servises;
 
-const arrThunk = [
-    thunk.getContactsThunk,
-    thunk.addContactsThunk,
-    thunk.delContactsThunk,
-  ];
-  
-export const optThunk = type => arrThunk.map(el => el[type]);
 
 export const contactsSlice = createSlice({
   name: 'contacts',
