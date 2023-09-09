@@ -5,8 +5,9 @@ import { contactsApi } from './contactsApi';
 import { reducer } from './reducer';
 
 export const store = configureStore({
-  reducer,
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(contactsApi.middleware),
+  reducer
 });
-setupListeners(store.dispatch);
+  // middleware: getDefaultMiddleware =>
+  //   getDefaultMiddleware().concat(contactsApi.middleware),
+
+// setupListeners(store.dispatch);

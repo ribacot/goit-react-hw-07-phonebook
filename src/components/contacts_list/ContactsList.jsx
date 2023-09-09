@@ -2,18 +2,23 @@ import { FiXSquare } from 'react-icons/fi';
 import { IconContext } from 'react-icons';
 
 import css from './ContactsList.module.css';
-import { useSelector } from 'react-redux';
-import { useDelContactMutation, useGetContactsQuery } from 'redux/contactsApi';
+import { useDispatch, useSelector } from 'react-redux';
+import { delContactsThunk } from 'redux/contacts/productThunk';
 
 export const ContactsList = () => {
-  const [delContact] = useDelContactMutation();
-  const { filter } = useSelector(state => state.filter);
-  const { data: contacts } = useGetContactsQuery(filter);
+ const { filter } = useSelector(state => state.filter);
+  const { contacts } = useSelector(state => state.contacts);
+  const dispatch = useDispatch();
+  const getFilteredContacts = () => {
+    console.log('filter',filter)
+    return contacts.filter(({ name }) => name.toLowerCase().includes(filter));
+  };
+
   return (
     <>
-      {contacts?.length ? (
+      {getFilteredContacts()?.length ? (
         <ul className={css.listContacts}>
-          {contacts?.map(({ name, id, number }) => (
+          {getFilteredContacts()?.map(({ name, id, number }) => (
             <li key={id} className={css.contact}>
               {name}:
               <span className={css.contact_tel}>
@@ -21,7 +26,7 @@ export const ContactsList = () => {
                 <button
                   className={css.btn_del}
                   type="button"
-                  onClick={() => delContact(id)}
+                  onClick={() => dispatch(delContactsThunk(id))}
                 >
                   <IconContext.Provider value={{ size: '1.2em' }}>
                     <FiXSquare />

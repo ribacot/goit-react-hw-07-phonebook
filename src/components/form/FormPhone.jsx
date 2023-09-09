@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import css from './FormFone.module.css';
-import { useAddContactMutation, useGetContactsQuery } from 'redux/contactsApi';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContactsThunk } from 'redux/contacts/productThunk';
 
 export const FormPhone = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const { data: contacts } = useGetContactsQuery();
-  const [addContact] = useAddContactMutation();
+  const { contacts } = useSelector(state => state.contacts);
+  const dispatch = useDispatch();
 
   const hendleChange = e => {
     const { name, value } = e.target;
@@ -33,7 +34,7 @@ export const FormPhone = () => {
 
   const formSubmit = e => {
     e.preventDefault();
-    addContact({ name, number });
+    dispatch(addContactsThunk({ name, number }));
     setName('');
     setNumber('');
   };
