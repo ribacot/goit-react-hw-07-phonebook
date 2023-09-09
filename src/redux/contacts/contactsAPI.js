@@ -10,11 +10,9 @@ export const addContact = async contact => {
     'https://64fa2e8c4098a7f2fc1570fd.mockapi.io/api/v1/contacts',
     {
       method: 'POST',
-      body: contact,
+      body: JSON.stringify(contact),
     }
-  );
-  console.log(contact)
-// console.log(data.json())
+  )
   return await data.json();
 };
 
