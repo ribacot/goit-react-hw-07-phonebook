@@ -4,7 +4,7 @@ import { IconContext } from 'react-icons';
 import css from './ContactsList.module.css';
 import { useDispatch } from 'react-redux';
 import { delContactsThunk } from 'redux/contacts/productThunk';
-import { useGetFilteredContacts } from 'hooks';
+import { useGetFilteredContacts } from 'redux/hooks';
 
 export const ContactsList = () => {
   const dispatch = useDispatch();

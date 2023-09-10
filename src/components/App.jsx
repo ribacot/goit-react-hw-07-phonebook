@@ -5,7 +5,7 @@ import Search from './search/Search';
 import { useDispatch} from 'react-redux';
 import { getContactsThunk } from 'redux/contacts/productThunk';
 import { useEffect } from 'react';
-import { useGetFilteredContacts } from 'hooks';
+import { useGetFilteredContacts } from 'redux/hooks';
 
 export const App = () => {
   const dispatch = useDispatch();
