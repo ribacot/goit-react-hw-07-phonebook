@@ -2,13 +2,14 @@ import Container from './container/Container';
 import { FormPhone } from './form/FormPhone';
 import { ContactsList } from './contacts_list/ContactsList';
 import Search from './search/Search';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { getContactsThunk } from 'redux/contacts/productThunk';
 import { useEffect } from 'react';
+import { useGetFilteredContacts } from 'hooks';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { contacts, isLoading, error } = useSelector(state => state.contacts);
+  const { contacts, isLoading, error } = useGetFilteredContacts();
 
   useEffect(() => {
     dispatch(getContactsThunk());
