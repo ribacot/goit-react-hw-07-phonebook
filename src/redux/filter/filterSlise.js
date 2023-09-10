@@ -1,5 +1,6 @@
-const { createSlice } = require('@reduxjs/toolkit');
-const { filterInitialState } = require('./initialState');
+import { createSlice } from "@reduxjs/toolkit";
+import { filterInitialState } from "./initialState";
+
 
 const filterSlise = createSlice({
   name: 'filter',

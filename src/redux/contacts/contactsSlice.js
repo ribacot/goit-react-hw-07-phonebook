@@ -12,7 +12,6 @@ const {
   optThunk,
 } = servises;
 
-
 export const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
@@ -27,4 +26,4 @@ export const contactsSlice = createSlice({
   },
 });
 
-export const contactsReducer= contactsSlice.reducer
+export const contactsReducer = contactsSlice.reducer;
